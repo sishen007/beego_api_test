@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  title: beegoApi
+  description: 这是一个beegoApi ApiDemo
+  version: 1.0.0
+  termsOfService: http://beegoApi.test
+  contact:
+    email: 646240358@qq.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /main/:
+    get:
+      tags:
+      - main
+      description: 获取用户
+      operationId: MainController.获取用户
+      parameters:
+      - in: query
+        name: id
+        description: Id
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: no enough input
+    put:
+      tags:
+      - main
+      description: 更新用户
+      operationId: MainController.更新用户
+      parameters:
+      - in: formData
+        name: id
+        description: IdFiled
+        type: integer
+        format: int64
+      - in: formData
+        name: name
+        description: nameFiled
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: no enough input
+    post:
+      tags:
+      - main
+      description: 新增用户
+      operationId: MainController.新增用户
+      parameters:
+      - in: formData
+        name: name
+        description: nameFiled
+        type: string
+    delete:
+      tags:
+      - main
+      description: API详细的描述
+      operationId: MainController.API所表达的含义
+      parameters:
+      - in: formData
+        name: id
+        description: IdFiled
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: '{string} 删除成功'
+        "400":
+          description: no enough input
+  /main/hello:
+    get:
+      tags:
+      - main
+      description: API详细的描述
+      operationId: MainController.API所表达的含义
+      parameters:
+      - in: query
+        name: name
+        description: nameFiled
+        type: string
+      responses:
+        "200":
+          description: '{string} 成功返回给客户端的信息(三个参数:status_code {object/string/int等}
+            返回的对象或者字符串信息)'
+        "400":
+          description: no enough input
+        "403":
+          description: 失败返回的信息(两个参数:status_code 错误信息)
+definitions:
+  models.Object:
+    title: Object
+    type: object
+    properties:
+      ObjectId:
+        type: string
+      PlayerName:
+        type: string
+      Score:
+        type: integer
+        format: int64
+  models.User:
+    title: User
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Name:
+        type: string
+tags:
+- name: main
+  description: |
+    Main Api Controller 这是模块注释
